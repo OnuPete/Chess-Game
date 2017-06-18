@@ -1,0 +1,14 @@
+.king {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  overflow: hidden;
+}
+
+.king>.ball {
+  position: absolute;
+  top:15%;
+  left:15%;
+  height: 70%;
+  width: 70%;
+}

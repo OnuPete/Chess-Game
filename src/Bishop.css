@@ -1,0 +1,17 @@
+.bishop{
+  position: relative;
+  top: 13%;
+  left: 13%;
+  width: 25px;
+  height: 25px;
+  border: 25px solid;
+  border-radius: 45%;
+}
+
+.bishop.black {
+  border-color: #898989 #2A2A2A #090909 black;
+}
+
+.bishop.white {
+  border-color: #F8F8F8 #E6E6E6 #989898 white;
+}

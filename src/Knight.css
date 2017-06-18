@@ -1,0 +1,18 @@
+.knight {
+  position: relative;
+  display: block;
+  top: 15%;
+  left: 15%;
+  border: solid 35px;
+  height: 0px;
+  width: 0px;
+
+}
+
+.knight.black {
+  border-color: #898989 #2A2A2A #090909 black;
+}
+
+.knight.white {
+  border-color: #F8F8F8 #E6E6E6 #989898 white;
+}

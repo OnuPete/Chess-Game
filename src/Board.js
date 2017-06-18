@@ -10,25 +10,27 @@ class Board extends Component {
     super();
     this.update = this.update.bind(this);
     this.boardSet = this.boardSet.bind(this);
-    this.back = ['R', 'K', 'R'];
-    this.front = ['P', 'P', 'P'];
+    this.togglePlayer = this.togglePlayer.bind(this);
+    this.back = ['R', 'Kn', 'B', 'K', 'B', 'Kn','R'];
+    this.front = ['P', 'P', 'P', 'P', 'P', 'P', 'P'];
     this.movesAvailable = {
       'P': [[1, 0], [-1, 0]],
       'R': [[1, 0], [-1, 0], [0, 1], [0, -1]],
-      'K': [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [-1, 1], [1, -1], [-1, -1]]
+      'K': [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [-1, 1], [1, -1], [-1, -1]],
+      'Kn': [[1, 2], [1, -2], [-1, 2], [-1, -2], [2, 1], [2, -1], [-2, 1], [-2, -1]],
+      'B': [[1, 1], [1, -1], [-1, 1], [-1, -1]]
     }
     this.state = {
       board: this.boardSet(),
       firstClick: true,
       selectedPiece:null,
-      slectedIndex: null
+      slectedIndex: null,
+      player: 0
     }
   }
 
   boardSet() {
-    const arr = Array(8).fill(Array(3).fill({kind:'-', player:3}));
-    const arrcopy = arr.slice();
-    console.log('aray', arr);
+    const arr = Array(8).fill(Array(7).fill({kind:'-', player:3}));
     let player0back = this.back.map((val) => {
       const acc = {};
       acc['player'] = 0;
@@ -65,7 +67,7 @@ class Board extends Component {
     console.log('p', piece, 'r', row, 'c', col)
     if(this.state.firstClick){
       //poll Array
-      if(piece.kind !== '-'){
+      if(piece.kind !== '-' && piece.player === this.state.player){
         this.setState({
           firstClick: false,
           selectedPiece: piece,
@@ -92,17 +94,25 @@ class Board extends Component {
         });
         if (isMove.length === 1) {
           if (piece.kind === 'K'){
-            alert('you Win');
+            alert('Player ' + this.state.player + ' Wins');
+            this.setState({
+              board: this.boardSet(),
+              firstClick: true,
+              selectedPiece:null,
+              slectedIndex: null,
+              player: 0
+            })
           }
           else {
             const arr = JSON.parse(JSON.stringify(this.state.board));
             arr[this.state.selectedIndex[0]][this.state.selectedIndex[1]] = {kind:'-'};
             arr[row][col] = this.state.selectedPiece;
+            this.togglePlayer();
             this.setState({
               board: arr,
               firstClick: true,
               selectedPiece: 1,
-              selectedIndex: 1
+              selectedIndex: 1,
             });
           }
         }
@@ -111,19 +121,29 @@ class Board extends Component {
 
   }
 
+  togglePlayer() {
+    const player = this.state.player ? 0: 1;
+    this.setState({player});
+  }
+
 
 
   render() {
-    return (<div className="board">
-      <Row onClick={(piece, row, col) => this.update(piece, 0, col)} piece={this.state.board[0]}/>
-      <Row onClick={(piece, row, col) => this.update(piece, 1, col)} piece={this.state.board[1]}/>
-      <Row onClick={(piece, row, col) => this.update(piece, 2, col)} piece={this.state.board[2]}/>
-      <Row onClick={(piece, row, col) => this.update(piece, 3, col)} piece={this.state.board[3]}/>
-      <Row onClick={(piece, row, col) => this.update(piece, 4, col)} piece={this.state.board[4]}/>
-      <Row onClick={(piece, row, col) => this.update(piece, 5, col)} piece={this.state.board[5]}/>
-      <Row onClick={(piece, row, col) => this.update(piece, 6, col)} piece={this.state.board[6]}/>
-      <Row onClick={(piece, row, col) => this.update(piece, 7, col)} piece={this.state.board[7]}/>
-    </div>);
+    return (
+    <div>
+      <div className="player">CurrentPlayer {this.state.player}</div>
+      <div className="board">
+        <Row onClick={(piece, row, col) => this.update(piece, 0, col)} even={false} piece={this.state.board[0]}/>
+        <Row onClick={(piece, row, col) => this.update(piece, 1, col)} even={true} piece={this.state.board[1]}/>
+        <Row onClick={(piece, row, col) => this.update(piece, 2, col)} even={false} piece={this.state.board[2]}/>
+        <Row onClick={(piece, row, col) => this.update(piece, 3, col)} even={true} piece={this.state.board[3]}/>
+        <Row onClick={(piece, row, col) => this.update(piece, 4, col)} even={false} piece={this.state.board[4]}/>
+        <Row onClick={(piece, row, col) => this.update(piece, 5, col)} even={true} piece={this.state.board[5]}/>
+        <Row onClick={(piece, row, col) => this.update(piece, 6, col)} even={false} piece={this.state.board[6]}/>
+        <Row onClick={(piece, row, col) => this.update(piece, 7, col)} even={true} piece={this.state.board[7]}/>
+      </div>
+    </div>
+  );
   }
 }
 
