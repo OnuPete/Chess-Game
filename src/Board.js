@@ -114,8 +114,6 @@ class Board extends Component {
 
 
   render() {
-
-
     return (<div className="board">
       <Row onClick={(piece, row, col) => this.update(piece, 0, col)} piece={this.state.board[0]}/>
       <Row onClick={(piece, row, col) => this.update(piece, 1, col)} piece={this.state.board[1]}/>
