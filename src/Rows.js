@@ -14,6 +14,7 @@ class Row extends Component {
       <Box onClick={(piece, row, col) => this.props.onClick(piece, row, 4)} color={colors[0]} piece={this.props.piece[4]}/>
       <Box onClick={(piece, row, col) => this.props.onClick(piece, row, 5)} color={colors[1]} piece={this.props.piece[5]}/>
       <Box onClick={(piece, row, col) => this.props.onClick(piece, row, 6)} color={colors[0]} piece={this.props.piece[6]}/>
+      <Box onClick={(piece, row, col) => this.props.onClick(piece, row, 7)} color={colors[1]} piece={this.props.piece[7]}/>
     </div>);
   }
 }

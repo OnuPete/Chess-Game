@@ -1,11 +1,13 @@
 .ball {
   display: inline-block;
-  width: 55%;
-  height: 55%;
+  width: 45%;
+  height: 45%;
   margin: 0;
-  top: 23%;
+  top: 24%;
+  left: 0%;
   border-radius: 50%;
   position: relative;
+  z-index: 4;
 }
 
 .black {
@@ -70,8 +72,8 @@ z-index: -1;
 }
 .stage {
   overflow: hidden;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   display: inline-block;
   margin: 0px;
   -webkit-perspective: 1200px;

@@ -3,7 +3,9 @@ import './Knight.css';
 
 function Knight(props) {
   return (
-    <div className={"knight " + (props.player ? 'black': 'white')}>
+    <div className={"outer-knight " + (props.player ? 'black': 'white')}>
+      <div className={"knight " + (props.player ? 'black': 'white')}>
+      </div>
     </div>
   )
 }

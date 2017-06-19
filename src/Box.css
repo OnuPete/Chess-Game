@@ -1,9 +1,15 @@
 .box{
-  height: 100px;
-  width: 100px;
+  display: block;
+  height: 80px;
+  width: 80px;
   border: 1px solid black;
+  z-index: -3;
 }
 
-.black {
-  background: #434343;
+.box.black {
+  background: #151515;
+}
+
+.box.white {
+  background: #EDEDED;
 }

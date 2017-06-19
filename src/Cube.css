@@ -1,6 +1,6 @@
 .container {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   position: relative;
   perspective: 200px;
 }
@@ -14,21 +14,21 @@
 
 #cube figure {
   margin: 0;
-  width: 76px;
-  height: 76px;
+  width: 56px;
+  height: 56px;
   display: block;
   position: absolute;
-  left: 15%;
-  top: 15%;
+  left: 18%;
+  top: 18%;
 
 }
 
-#cube .front  { transform: rotateY(   0deg ) translateZ( 40px ); }
-#cube .back   { transform: rotateX( 180deg ) translateZ( 40px ); }
-#cube .right  { transform: rotateY(  90deg ) translateZ( 40px ); }
-#cube .left   { transform: rotateY( -90deg ) translateZ( 40px ); }
-#cube .top    { transform: rotateX(  90deg ) translateZ( 40px ); }
-#cube .bottom { transform: rotateX( -90deg ) translateZ( 40px ); }
+#cube .front  { transform: rotateY(   0deg ) translateZ( 30px ); }
+#cube .back   { transform: rotateX( 180deg ) translateZ( 30px ); }
+#cube .right  { transform: rotateY(  90deg ) translateZ( 30px ); }
+#cube .left   { transform: rotateY( -90deg ) translateZ( 30px ); }
+#cube .top    { transform: rotateX(  90deg ) translateZ( 30px ); }
+#cube .bottom { transform: rotateX( -90deg ) translateZ( 30px ); }
 
 #cube { transform: translateZ( -76px ); }
 

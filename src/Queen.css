@@ -1,0 +1,14 @@
+.queen {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  overflow: hidden;
+}
+
+.queen>.ball {
+  position: absolute;
+  top: 13%;
+  left: 13%;
+  height: 45%;
+  width: 45%;
+}
